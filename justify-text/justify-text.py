@@ -4,42 +4,44 @@ class JustifyText():
         self.text = text
         self.length = length
     
-    def format_text(self, text):
-        output_text = ''
-        count_char = 0
-        line = ''
+    def spaces_text(self, line, spaces):
+        output_line = ''
+        spaces_received = line.count('#')
+        words = line.split('#')
+        spaces_to_include = spaces_received + spaces
+        i = 0
+        
+        # se retira de la lista los elementos vacios
+        for index in range(len(words)):
+            if words[index] == '':
+                words.pop(index)
 
-        for j in text:
-            if count_char != 0:
-                line = count_char % self.length
-            
-            if line == 0:
-                output_text += '\n'+j
-            else:
-                output_text += j
-            
-            count_char += 1
+        while i < spaces_to_include:
+            for j in range(len(words)):
+                if words[j] != words[-1]:
+                    words[j] += '*'
+                    i += 1
+                if i == spaces_to_include:
+                    break
 
-        return output_text
+        output_line = ''.join(words)           
 
+        return output_line
     
     def format_words(self):
         words = self.text.split(' ')
         output_text = ''
-        count_char = 0
         line = ''
-        len_text = len(self.text)
-        count_line = 0
 
         for word in words:
-            word_len = len(word) # 6
-            temp_sum = len(line) + word_len # 24 + 6 =31
+            word_len = len(word)
+            temp_sum = len(line) + word_len 
             line_len = len(line)
             
 
             if line_len < self.length:
-                #print(line_len)
-                if temp_sum > self.length: # 31 < 30
+
+                if temp_sum > self.length:
                     spaces = self.length - line_len
                     output_text += line + spaces * '*' + '\n'
                     line = ''
@@ -50,7 +52,7 @@ class JustifyText():
                     line = ''
                     line += word + '#'
                 else:
-                    line += word + '#' # 2
+                    line += word + '#'
                     if word == words[-1]:
                         line = line[:-1]
                         output_text += line
