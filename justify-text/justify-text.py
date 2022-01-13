@@ -6,8 +6,8 @@ class JustifyText():
     
     def spaces_text(self, line, spaces):
         output_line = ''
-        spaces_received = line.count('#')
-        words = line.split('#')
+        spaces_received = line.count(' ')
+        words = line.split(' ')
         spaces_to_include = spaces_received + spaces
         i = 0
         
@@ -19,7 +19,7 @@ class JustifyText():
         while i < spaces_to_include:
             for j in range(len(words)):
                 if words[j] != words[-1]:
-                    words[j] += '*'
+                    words[j] += ' '
                     i += 1
                 if i == spaces_to_include:
                     break
@@ -43,25 +43,28 @@ class JustifyText():
 
                 if temp_sum > self.length:
                     spaces = self.length - line_len
-                    output_text += line + spaces * '*' + '\n'
+                    formated_line = self.spaces_text(line, spaces)
+                    output_text += formated_line + '\n'
                     line = ''
-                    line += word + '#'
+                    line += word + ' '
                 elif temp_sum == self.length:
                     line += word
-                    output_text += line + '\n'
+                    formated_line = self.spaces_text(line, 0)
+                    output_text += formated_line + '\n'
                     line = ''
-                    line += word + '#'
+                    line += word + ' '
                 else:
-                    line += word + '#'
+                    line += word + ' '
                     if word == words[-1]:
                         line = line[:-1]
                         output_text += line
             
             elif line_len == self.length:
-                output_text += line + '\n'
+                formated_line = self.spaces_text(line, 0)
+                output_text += formated_line + '\n'
                 line = ''
                 if temp_sum > self.length:
-                    line += word + '#'
+                    line += word + ' '
 
             
         return output_text
