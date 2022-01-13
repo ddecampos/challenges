@@ -4,4 +4,4 @@ En este repositorio se iran subiendo algunos challenges de entrevistas, que pued
 
 |   Challenge                       |   Status            | Live mode                                           |
 | :-------------------------------- | :------------------ | :-------------------------------------------------- |
-|   [Justify Text](/justify-text)   |   `Resolviendo...`  | https://replit.com/@eldanigeek/justify-text#main.py |
+|   [Justify Text](/justify-text)   |   `Resuelto`        | https://replit.com/@eldanigeek/justify-text#main.py |
