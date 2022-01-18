@@ -82,7 +82,7 @@ class JustifyText():
             
         return output_text
 
-input_text = 'La historia de la ópera tiene una duración relativamente corta dentro del contexto de la historia de la música en general apareció en 1597, fecha en que se creó la primera ópera.'
+input_text = input("Escribe el texto que deseas justificar: ")
 obj = JustifyText(input_text,30)
 
 print(obj.format_words())
