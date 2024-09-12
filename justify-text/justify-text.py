@@ -11,14 +11,17 @@ class JustifyText():
         spaces_to_include = spaces_received + spaces
         i = 0
         
+        
         # se retira de la lista los elementos vacios
         for index in range(len(words)):
             if words[index] == '':
                 words.pop(index)
 
+        len_words = len(words)
+
         # se insertan espacios uno a uno
         while i < spaces_to_include:
-            for j in range(len(words)):
+            for j in range(len_words):
                 if words[j] != words[-1]:
                     words[j] += ' '
                     i += 1
@@ -30,7 +33,12 @@ class JustifyText():
                 output_line = self.text[:self.length]
                 break
             else:
-                output_line = ''.join(words)          
+                output_line = ''.join(words)
+
+            # para lineas de una sola palabra
+            if len_words == 1:
+                output_line = words[0]
+                break
 
         return output_line
     
@@ -65,10 +73,7 @@ class JustifyText():
                     line += word + ' '
                 else:
                     line += word + ' '
-                    # para generar la ultima linea
-                    if count_words == (len_words_list - 1):
-                        line = line[:-1]
-                        output_text += line + '\n'
+                
             
             # en casos donde la linea ya tiene una logitud dada
             elif line_len == self.length:
@@ -79,6 +84,11 @@ class JustifyText():
                     line += word + ' '
             
             count_words += 1
+        
+        # para generar la ultima linea
+        if count_words == len_words_list:
+            line = line[:-1]
+            output_text += line + '\n'
             
         return output_text
 
