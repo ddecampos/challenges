@@ -1,3 +1,6 @@
 [submodule "my-flask-app"]
 	path = my-flask-app
 	url = https://github.com/ddecampos/my-flask-app.git
+[submodule "weather-app"]
+	path = weather-app
+	url = https://github.com/ddecampos/weather-app.git
